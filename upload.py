@@ -44,7 +44,7 @@ def fetch_table_names(engine, department, selected_department=None):
 
             mapping_query = text("""
                 SELECT tables_mapped 
-                FROM [SyngentaNICEProjectBungoma].dbo.user_mapping 
+                FROM [SyngentaNICEProjectBusia].dbo.user_mapping 
                 WHERE category = :dept
             """)
             result = conn.execute(mapping_query, {"dept": target_dept.upper()})
@@ -59,7 +59,7 @@ def fetch_table_names(engine, department, selected_department=None):
 def fetch_departments(engine):
     try:
         with engine.connect() as conn:
-            dept_query = text("SELECT DISTINCT category FROM [SyngentaNICEProjectBungoma].dbo.user_mapping")
+            dept_query = text("SELECT DISTINCT category FROM [SyngentaNICEProjectBusia].dbo.user_mapping")
             result = conn.execute(dept_query)
             departments = [row[0] for row in result if row[0]]
             return sorted(departments)
@@ -134,7 +134,7 @@ def update_user_mapping(engine, department, new_table):
         category = department.upper()
         with engine.begin() as conn:
             insert_query = text("""
-                INSERT INTO [SyngentaNICEProjectBungoma].dbo.user_mapping (department_id, category, tables_mapped)
+                INSERT INTO [SyngentaNICEProjectBusia].dbo.user_mapping (department_id, category, tables_mapped)
                 VALUES (:dept_id, :category, :tables)
             """)
             conn.execute(insert_query, {
@@ -357,7 +357,7 @@ def data_page():
             "Bumula", "Kanduyi", "Sirisia", "Kabuchai", "Kimilili",
             "Tongaren", "Webuye West", "Webuye East", "Mt. Elgon"
         ]
-        county = "Bungoma"
+        county = "Busia"
         county_index = 1
 
         selected_topic = st.selectbox("Select a topic", topics)
@@ -379,7 +379,7 @@ def data_page():
                 try:
                     cursor = conn.cursor()
                     insert_query = """
-                        INSERT INTO [SyngentaNICEProjectBungoma].dbo.FD_Bungoma_Food_Accessibility 
+                        INSERT INTO [SyngentaNICEProjectBusia].dbo.FD_Busia_Food_Accessibility 
                         ([County], [Subcounties in Busia], [Number of Kiosks], 
                          [Number of Supermarkets], [Number of Markets], [County Index])
                         VALUES (?, ?, ?, ?, ?, ?)
@@ -417,7 +417,7 @@ def data_page():
                 try:
                     cursor = conn.cursor()
                     insert_query = """
-                        INSERT INTO [SyngentaNICEProjectBungoma].dbo.Overweight
+                        INSERT INTO [SyngentaNICEProjectBusia].dbo.Overweight
                         ([GenderID], [baseline], [county_index], [Year])
                         VALUES (?, ?, ?, ?)
                     """
@@ -456,7 +456,7 @@ def data_page():
                 try:
                     cursor = conn.cursor()
                     insert_query = """
-                        INSERT INTO [SyngentaNICEProjectBungoma].dbo.[bungoma stakeholders food systems]
+                        INSERT INTO [SyngentaNICEProjectBusia].dbo.[Busia stakeholders food systems]
                         ([Domain], [indicator], [County], [county index], [Groups], [Baseline])
                         VALUES (?, ?, ?, ?, ?, ?)
                     """
