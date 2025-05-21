@@ -153,7 +153,7 @@ def data_page():
         st.rerun()
         return
 
-    st.title("Bungoma Data Management")
+    st.title("Busia Data Management")
     st.write(f"Welcome, {st.session_state['username']}! (Department: {st.session_state['department']})")
 
     if st.button("Logout"):
