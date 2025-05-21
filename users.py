@@ -27,7 +27,7 @@ def get_db_engine():
 def fetch_users(engine):
     try:
         with engine.connect() as conn:
-            query = text("SELECT username, password, department FROM [SyngentaNICEProjectBungoma].dbo.[users]")
+            query = text("SELECT username, password, department FROM [SyngentaNICEProjectBusia].dbo.[users]")
             result = conn.execute(query)
             users = {}
             for username, password, department in result:
