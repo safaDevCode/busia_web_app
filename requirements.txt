@@ -1,4 +1,4 @@
-setuptools==68.2.2
+#setuptools==68.2.2
 agate==1.7.1
 altair==5.2.0
 annotated-types==0.6.0
@@ -14,7 +14,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
 #cryptography==41.0.7
-dbt-core==1.7.9
+#dbt-core==1.7.9
 dbt-extractor==0.5.1
 dbt-fabric==1.7.4
 dbt-postgres==1.7.9
